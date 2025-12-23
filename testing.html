@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Skinstric</title>
+    <meta name="description" content="Your AI Skin Analysis"/>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="__className_5f0add antialiased text-[#1A1B1C]">
+    <div class="flex flex-row h-[64px] w-full justify-between py-3 mb-3 relative z-[1000]">
+        <div class="flex flex-row pt-1 scale-75 justify-center items-center">
+            <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-colors h-9 px-4 py-2 font-semibold text-sm mr-2 line-clamp-4 leading-[16px] text-[#1A1B1C] z-1000" href="index.html">SKINSTRIC</a>
+            <img alt="left-bracket" loading="lazy" width="5" height="19" decoding="async" class="w-[4px] h-[17px]" style="color:transparent" src="Rectangle_2710.png"/>
+            <p class="text-[#1a1b1c83] text-opacity-70  font-semibold text-sm ml-1.5 mr-1.5">INTRO</p>
+            <img alt="right-bracket" loading="lazy" width="5" height="19" decoding="async" class="w-[4px] h-[17px]" style="color:transparent" src="Rectangle_2711.png"/>
+        </div>
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold  transition-colors  disabled:pointer-events-none text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 mx-4 scale-[0.8] text-[#FCFCFC] text-[10px] bg-[#1A1B1C] leading-[16px]">ENTER CODE</button>
+    </div>
+    <div class="min-h-[90vh] flex flex-col items-center justify-center bg-white text-center">
+        <div class="absolute top-16 left-9 text-left">
+            <p class="font-semibold text-xs">TO START ANALYSIS</p>
+        </div>
+        <div class="relative flex flex-col items-center justify-center mb-40 w-full h-full">
+            <p class="text-sm text-gray-400 tracking-wider uppercase mb-1">CLICK TO TYPE</p>
+            <form class="relative z-10" id="name-form">
+                <div class="flex flex-col items-center"></div>
+                <input class="text-5xl sm:text-6xl font-normal text-center bg-transparent border-b border-black focus:outline-none appearance-none w-[372px] sm:w-[432px] pt-1 tracking-[-0.07em] leading-[64px] text-[#1A1B1C] z-10" placeholder="Introduce Yourself" type="text" autocomplete="off" autofocus name="name" id="name-input"/>
+                <button type="submit" class="sr-only">Submit</button>
+            </form>
+            <img alt="Diamond Large" loading="lazy" width="762" height="762" decoding="async" class="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[480px] h-[480px] md:w-[762px] md:h-[762px] animate-spin-slow rotate-190" style="color:transparent" src="Diamond-light-large.png"/>
+            <img alt="Diamond Medium" loading="lazy" width="682" height="682" decoding="async" class="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[400px] h-[400px] md:w-[682px] md:h-[682px] animate-spin-slower rotate-185" style="color:transparent" src="Diamond-medium-medium.png"/>
+            <img alt="Diamond Small" loading="lazy" width="602" height="602" decoding="async" class="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 w-[320px] h-[320px] md:w-[602px] md:h-[602px] animate-spin-slowest" style="color:transparent" src="Diamond-dark-small.png"/>
+        </div>
+        <div class="absolute bottom-38.5 md:bottom-8 w-full flex justify-between md:px-9 px-13">
+            <a class="inset-0" aria-label="Back" href="index.html">
+                <div>
+                    <div class="relative w-12 h-12 flex items-center justify-center border border-[#1A1B1C] rotate-45 scale-[1] sm:hidden">
+                        <span class="rotate-[-45deg] text-xs font-semibold sm:hidden">BACK</span>
+                    </div>
+                    <div class="group hidden sm:flex flex-row relative justify-center items-center">
+                        <div class="w-12 h-12 hidden sm:flex justify-center border border-[#1A1B1C] rotate-45 scale-[0.85] group-hover:scale-[0.92] ease duration-300"></div>
+                        <span class="absolute left-[15px] bottom-[13px] scale-[0.9] rotate-180 hidden sm:block group-hover:scale-[0.92] ease duration-300">▶</span>
+                        <span class="text-sm font-semibold hidden sm:block ml-6">BACK</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script src="testing.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: roobert;
+  src: url(/fonts/233c79a3dd5d29c1-s.p.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: roobert;
+  src: url(/fonts/3af00888eb197ae2-s.p.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: roobert;
+  src: url(/fonts/5c52d55133bd4cc4-s.p.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: roobert;
+  src: url(/fonts/d7d5f4714741d93b-s.p.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: roobert;
+  src: url(/fonts/d23b9ce7f15ea07c-s.p.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: roobert Fallback;
+  src: local("Arial");
+  ascent-override: 98.65%;
+  descent-override: 23.84%;
+  line-gap-override: 0.00%;
+  size-adjust: 103.20%;
+}
+
+.__className_5f0add {
+  font-family: roobert, roobert Fallback;
+}
+
+body,
+html {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.animate-spin-slow {
+  animation: spin 50s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spin 70s linear infinite;
+}
+
+.animate-spin-slowest {
+  animation: spin 85s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
