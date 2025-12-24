@@ -36,11 +36,11 @@ export default function ProcessingPage() {
         
         {/* Main content */}
         <div className="relative flex flex-col items-center justify-center z-10">
-          <h1 className="text-4xl sm:text-5xl font-normal text-center text-[#1A1B1C] mb-8">
+          <h1 className="text-4xl sm:text-5xl font-normal text-center text-[#1A1B1C] mb-6">
             processing submission
           </h1>
           
-          {/* Three dots loading indicator - evenly spaced */}
+          {/* Three dots loading indicator - evenly spaced on separate line */}
           <div className="flex items-center justify-center gap-3">
             <div className="w-3 h-3 bg-[#1A1B1C] rounded-full animate-dot-1"></div>
             <div className="w-3 h-3 bg-[#1A1B1C] rounded-full animate-dot-2"></div>
