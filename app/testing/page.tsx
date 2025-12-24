@@ -40,7 +40,7 @@ export default function TestingPage() {
           // Store user ID and name in sessionStorage
           sessionStorage.setItem('userId', data.data.id)
           sessionStorage.setItem('userName', data.data.name)
-          router.push('/result')
+          router.push('/city')
         } else {
           console.error('Error creating user:', data.error)
           alert('Failed to create user account. Please try again.')
