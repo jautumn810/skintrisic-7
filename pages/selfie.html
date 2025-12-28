@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Take Selfie - Skinstric</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="../index.html" class="brand">SKINSTRIC</a>
+    <div class="header-bracket-container">
+      <img src="/public/Rectangle_2710.png" alt="[" class="header-bracket-img">
+      <span class="section">INTRO</span>
+      <img src="/public/Rectangle_2711.png" alt="]" class="header-bracket-img">
+    </div>
+    <button class="enter-code">ENTER CODE</button>
+  </header>
+
+  <div class="page-wrapper">
+    <div class="selfie-page-container">
+      <div class="selfie-page-title">TAKE A SELFIE</div>
+
+      <div class="selfie-video-container">
+        <video id="video" playsinline class="selfie-video"></video>
+        <canvas id="canvas" class="selfie-canvas"></canvas>
+      </div>
+
+      <button
+        type="button"
+        id="capture-btn"
+        class="selfie-capture-btn"
+      >
+        CAPTURE & ANALYZE
+      </button>
+
+      <div id="error-message" class="error-message hidden"></div>
+    </div>
+
+    <div class="back-fixed">
+      <button type="button" class="diamond-btn white" data-back-button>
+        <span>BACK</span>
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="../js/common.js"></script>
+  <script type="module" src="../js/pages/selfie.js"></script>
+</body>
+</html>

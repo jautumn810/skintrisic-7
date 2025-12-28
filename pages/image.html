@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Image - Skinstric</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="../index.html" class="brand">SKINSTRIC</a>
+    <div class="header-bracket-container">
+      <img src="/public/Rectangle_2710.png" alt="[" class="header-bracket-img">
+      <span class="section">INTRO</span>
+      <img src="/public/Rectangle_2711.png" alt="]" class="header-bracket-img">
+    </div>
+    <button class="enter-code">ENTER CODE</button>
+  </header>
+
+  <div class="page-wrapper">
+    <div class="upload-page-container">
+      <div class="upload-page-title">UPLOAD YOUR IMAGE</div>
+
+      <div class="upload-options-grid">
+        <label class="upload-option-label">
+          <div class="upload-option-title">ACCESS GALLERY</div>
+          <div class="upload-option-desc">Select an image to run Phase 2 analysis.</div>
+          <input
+            type="file"
+            accept="image/*"
+            id="file-input"
+            class="upload-file-input"
+            disabled
+          />
+        </label>
+
+        <div class="upload-option-box">
+          <div class="upload-option-title">TAKE A SELFIE</div>
+          <div class="upload-option-desc">
+            Use the camera instead of uploading an image.
+          </div>
+          <button
+            type="button"
+            id="camera-btn"
+            class="upload-camera-btn"
+          >
+            OPEN CAMERA
+          </button>
+        </div>
+      </div>
+
+      <div id="error-message" class="error-message hidden"></div>
+    </div>
+
+    <div class="back-fixed">
+      <button type="button" class="diamond-btn white" data-back-button>
+        <span>BACK</span>
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="../js/common.js"></script>
+  <script type="module" src="../js/pages/image.js"></script>
+</body>
+</html>

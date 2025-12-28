@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permissions - Skinstric</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="../index.html" class="brand">SKINSTRIC</a>
+    <div class="header-bracket-container">
+      <img src="/public/Rectangle_2710.png" alt="[" class="header-bracket-img">
+      <span class="section">INTRO</span>
+      <img src="/public/Rectangle_2711.png" alt="]" class="header-bracket-img">
+    </div>
+    <button class="enter-code">ENTER CODE</button>
+  </header>
+
+  <div class="page-wrapper">
+    <div class="ai-wrap">
+      <div class="ai-top-row">
+        <div class="ai-start-title">TO START ANALYSIS</div>
+        <div class="ai-preview">
+          <div class="ai-preview-label">Preview</div>
+          <div class="ai-preview-box"></div>
+        </div>
+      </div>
+
+      <div class="ai-block">
+        <div class="ai-squares">
+          <div class="ai-square" style="--r: 12deg;"></div>
+          <div class="ai-square s2" style="--r: 28deg;"></div>
+          <div class="ai-square s3" style="--r: 44deg;"></div>
+        </div>
+        <div class="ai-block-inner">
+          <img src="/public/icons/icon-camera.svg" alt="camera" class="ai-icon">
+          <div class="ai-label-top">ALLOW A.I.</div>
+          <div class="ai-label-bottom">TO SCAN YOUR FACE</div>
+        </div>
+      </div>
+
+      <div class="ai-block ai-block-spacer">
+        <div class="ai-squares">
+          <div class="ai-square" style="--r: 12deg;"></div>
+          <div class="ai-square s2" style="--r: 28deg;"></div>
+          <div class="ai-square s3" style="--r: 44deg;"></div>
+        </div>
+        <div class="ai-block-inner">
+          <img src="/public/icons/icon-gallery.svg" alt="gallery" class="ai-icon">
+          <div class="ai-label-top">ALLOW A.I.</div>
+          <div class="ai-label-bottom">ACCESS GALLERY</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-fixed">
+      <button type="button" class="diamond-btn white" data-back-button>
+        <span>BACK</span>
+      </button>
+    </div>
+
+    <div class="right-fixed">
+      <button type="button" class="diamond-btn black" id="proceed-btn" data-home-button="image.html">
+        <span>PROCEED</span>
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="../js/common.js"></script>
+  <script type="module" src="../js/pages/permissions.js"></script>
+</body>
+</html>
