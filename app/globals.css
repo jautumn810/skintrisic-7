@@ -612,6 +612,14 @@ html, body {
     height: 120px;
   }
   
+  .diamond-btn.small {
+    width: 100px;
+    height: 100px;
+  }
+  .diamond-btn.small span {
+    font-size: 14px;
+  }
+  
   .arc-meter {
     width: 100%;
     max-width: 400px;
