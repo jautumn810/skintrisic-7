@@ -8,6 +8,7 @@ node_modules/
 
 # Production
 /build
+/dist
 
 # Misc
 .DS_Store
@@ -23,6 +24,11 @@ yarn-error.log*
 # Next.js (removing these)
 .next
 out
+
+# Vite
+dist/
+dist-ssr/
+*.local
 
 # IDE
 .vscode/

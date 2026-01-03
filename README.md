@@ -1,12 +1,20 @@
-# Skinstric AI - HTML/CSS/JavaScript Project
+# Skinstric AI - Vite + React Project
 
-A simple HTML, CSS, and JavaScript website for Skinstric AI skin analysis.
+A modern React application built with Vite for Skinstric AI skin analysis.
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm or yarn
+
 ### Installation
 
-No dependencies required! This project uses plain HTML, CSS, and JavaScript.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
 ### Running the Project
 
@@ -14,71 +22,75 @@ No dependencies required! This project uses plain HTML, CSS, and JavaScript.
    ```bash
    npm run dev
    ```
-   or
-   ```bash
-   npm start
-   ```
 
 2. Open your browser and navigate to:
    ```
    http://localhost:3000
    ```
 
-### Alternative: Using Python
-
-If you prefer not to use Node.js, you can use Python's built-in server:
+### Building for Production
 
 ```bash
-# Python 3
-python -m http.server 3000
-
-# Python 2
-python -m SimpleHTTPServer 3000
+npm run build
 ```
 
-Then open `http://localhost:3000` in your browser.
+The production build will be in the `dist` directory.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
 
 ## Project Structure
 
 ```
-├── index.html              # Home page
-├── pages/                  # All page files
-│   ├── introduce.html      # Name input page
-│   ├── city.html           # City input page
-│   ├── permissions.html    # Permissions page
-│   ├── image.html          # Image upload page
-│   ├── selfie.html         # Camera selfie page
-│   └── demographics.html   # Demographics analysis page
-├── css/
-│   └── styles.css          # All styles
-├── js/                     # JavaScript utilities
-│   ├── storage.js          # LocalStorage helpers
-│   ├── validators.js       # Input validation
-│   ├── api.js              # API calls
-│   └── router.js           # Navigation helpers
-├── public/                 # Static assets (images, icons)
-└── server.js               # Simple HTTP server (optional)
+├── index.html              # Entry point
+├── vite.config.js          # Vite configuration
+├── package.json            # Dependencies and scripts
+├── src/
+│   ├── main.jsx           # React entry point
+│   ├── App.jsx            # Main App component
+│   ├── globals.css        # Global styles
+│   ├── components/        # React components
+│   │   ├── SiteHeader.jsx
+│   │   ├── DiamondNav.jsx
+│   │   ├── BackButton.jsx
+│   │   └── BlinkingInput.jsx
+│   ├── pages/             # Page components
+│   │   ├── HomePage.jsx
+│   │   ├── analysis/      # Analysis flow pages
+│   │   └── SummaryPage.jsx
+│   └── lib/               # Utilities
+│       ├── api.js         # API calls
+│       ├── storage.js     # LocalStorage helpers
+│       └── validators.js  # Input validation
+├── public/                # Static assets (images, icons)
+└── dist/                  # Production build output
 ```
 
 ## Features
 
-- ✅ Plain HTML/CSS/JavaScript (no frameworks)
+- ✅ Vite for fast development and optimized builds
+- ✅ React 19 for modern UI components
+- ✅ React Router for navigation
 - ✅ LocalStorage for data persistence
 - ✅ Image upload functionality
 - ✅ Camera selfie capture
 - ✅ API integration for AI analysis
 - ✅ Responsive design
-- ✅ Simple HTTP server included
+- ✅ Tailwind CSS for styling
 
 ## Pages
 
 - `/` - Home/Landing page
-- `/pages/introduce.html` - Enter your name
-- `/pages/city.html` - Enter your city
-- `/pages/permissions.html` - Permissions explanation
-- `/pages/image.html` - Upload image or take selfie
-- `/pages/selfie.html` - Camera selfie capture
-- `/pages/demographics.html` - AI demographics analysis
+- `/analysis/introduce` - Enter your name
+- `/analysis/city` - Enter your city
+- `/analysis/permissions` - Permissions explanation
+- `/analysis/image` - Upload image
+- `/analysis/selfie` - Camera selfie capture
+- `/analysis/demographics` - AI demographics analysis
+- `/summary` - Analysis summary
 
 ## API Endpoints
 
