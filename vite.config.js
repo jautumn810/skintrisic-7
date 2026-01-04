@@ -19,6 +19,7 @@ export default defineConfig({
     outDir: 'dist'
   },
   resolve: {
+    extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'],
     alias: {
       '@': resolve(__dirname, './'),
       '@js': resolve(__dirname, './js'),

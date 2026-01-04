@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import SiteHeader from '../components/SiteHeader.jsx'
-import { saveUser } from '../lib/storage.js'
+import SiteHeader from '../components/SiteHeader'
+import { saveUser } from '../lib/storage'
 
 export default function TestingPage() {
   const navigate = useNavigate()

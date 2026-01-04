@@ -1,9 +1,9 @@
-import SiteHeader from '../../components/SiteHeader.jsx'
-import { DiamondButton } from '../../components/DiamondNav.jsx'
+import SiteHeader from '../../components/SiteHeader'
+import { DiamondButton } from '../../components/DiamondNav'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { postPhaseTwo } from '../../lib/api.js'
-import { saveAI, saveImageBase64 } from '../../lib/storage.js'
+import { postPhaseTwo } from '../../lib/api'
+import { saveAI, saveImageBase64 } from '../../lib/storage'
 
 export default function SelfiePage() {
   const navigate = useNavigate()

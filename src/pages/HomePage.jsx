@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import SiteHeader from '../components/SiteHeader.jsx'
+import SiteHeader from '../components/SiteHeader'
 
 export default function HomePage() {
   const headingRef = useRef(null)

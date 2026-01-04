@@ -1,9 +1,9 @@
-import SiteHeader from '../../components/SiteHeader.jsx'
-import { DiamondButton } from '../../components/DiamondNav.jsx'
+import SiteHeader from '../../components/SiteHeader'
+import { DiamondButton } from '../../components/DiamondNav'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { fileToBase64, postPhaseTwo } from '../../lib/api.js'
-import { saveAI, saveImageBase64, loadImageBase64 } from '../../lib/storage.js'
+import { fileToBase64, postPhaseTwo } from '../../lib/api'
+import { saveAI, saveImageBase64, loadImageBase64 } from '../../lib/storage'
 
 export default function ImageUploadPage() {
   const navigate = useNavigate()

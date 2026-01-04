@@ -1,10 +1,10 @@
-import SiteHeader from '../../components/SiteHeader.jsx'
-import { DiamondButton } from '../../components/DiamondNav.jsx'
-import BlinkingInput from '../../components/BlinkingInput.jsx'
+import SiteHeader from '../../components/SiteHeader'
+import { DiamondButton } from '../../components/DiamondNav'
+import BlinkingInput from '../../components/BlinkingInput'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { isValidLettersOnly } from '../../lib/validators.js'
-import { loadUser, saveUser } from '../../lib/storage.js'
+import { isValidLettersOnly } from '../../lib/validators'
+import { loadUser, saveUser } from '../../lib/storage'
 
 export default function IntroducePage() {
   const navigate = useNavigate()
