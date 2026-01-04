@@ -1,17 +1,6 @@
-server.js
-node_modules
-.next
-.vscode
-*.log
-dist
-build
-app
-app.old.backup
-pages.legacy
-js
-lib
-components
-css
-styles.css
-next.config.js
-next.config.js.backup
+# Ignore Next.js artifacts that confuse Vercel auto-detection
+app/
+app.legacy/
+next-env.d.ts
+.next/
+tsconfig.tsbuildinfo
