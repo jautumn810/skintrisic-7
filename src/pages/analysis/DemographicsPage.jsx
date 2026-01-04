@@ -1,8 +1,8 @@
-import SiteHeader from '../../components/SiteHeader'
-import { DiamondButton } from '../../components/DiamondNav'
+import SiteHeader from '../../components/SiteHeader.jsx'
+import { DiamondButton } from '../../components/DiamondNav.jsx'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useMemo, useState } from 'react'
-import { loadAI } from '../../lib/storage'
+import { loadAI } from '../../lib/storage.js'
 
 function sortScores(scores) {
   return Object.entries(scores)

@@ -1,4 +1,4 @@
-import SiteHeader from '../../components/SiteHeader'
+import SiteHeader from '../../components/SiteHeader.jsx'
 import { useNavigate } from 'react-router-dom'
 
 export default function AnalysisResultsPage() {
