@@ -435,13 +435,19 @@ html, body {
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 140px;
+  position: relative;
 }
 .ai-start-title {
   font-size: 20px;
   font-weight: 800;
   letter-spacing: 0.06em;
 }
-.ai-preview { width: 220px; }
+.ai-preview { 
+  width: 220px; 
+  position: absolute;
+  right: 28px;
+  top: 0;
+}
 .ai-preview-label {
   font-size: 18px;
   margin-bottom: 10px;
@@ -630,5 +636,74 @@ html, body {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+
+/* Mobile responsiveness ≤480px */
+@media (max-width: 480px) {
+  .site-header {
+    height: 90px;
+    padding: 0 16px;
+  }
+  
+  .input-page,
+  .demographics-container,
+  .ai-wrap {
+    padding-top: 110px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .diamond-btn {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .diamond-btn span {
+    font-size: 14px;
+  }
+  
+  .back-fixed,
+  .right-fixed {
+    bottom: 20px;
+  }
+  
+  .back-fixed {
+    left: 16px;
+  }
+  
+  .right-fixed {
+    right: 16px;
+  }
+  
+  .ai-preview {
+    width: 180px;
+    right: 16px;
+  }
+  
+  .ai-preview-box {
+    width: 180px;
+    height: 220px;
+  }
+  
+  .dem-cards {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .dem-table {
+    font-size: 14px;
+  }
+}
+
+/* Loading dots animation */
+.loading-dots::after {
+  content: '';
+  animation: loading-dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
 }
 

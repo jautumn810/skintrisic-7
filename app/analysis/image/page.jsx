@@ -11,19 +11,35 @@ export default function ImageUploadPage() {
   const router = useRouter()
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   async function handleFile(file) {
     setError(null)
     setLoading(true)
+    setSuccess(false)
+
+    const startTime = Date.now()
+
     try {
       const b64 = await fileToBase64(file)
       saveImageBase64(b64)
-      const json = await postPhaseTwo({ Image: b64 })
+      const json = await postPhaseTwo({ image: b64 })
       saveAI(json)
-      router.push("/analysis/demographics")
+      
+      const elapsed = Date.now() - startTime
+      const minDisplay = 600
+      if (elapsed < minDisplay) {
+        await new Promise(resolve => setTimeout(resolve, minDisplay - elapsed))
+      }
+      
+      setSuccess(true)
+      setLoading(false)
+      
+      setTimeout(() => {
+        router.push("/analysis/demographics")
+      }, 1500)
     } catch (e) {
       setError(e?.message ?? "Failed to upload image.")
-    } finally {
       setLoading(false)
     }
   }
@@ -69,6 +85,18 @@ export default function ImageUploadPage() {
 
         {error && (
           <div style={{ marginTop: 18, color: "#b00020", fontWeight: 800 }}>{error}</div>
+        )}
+
+        {loading && (
+          <div style={{ marginTop: 18, fontWeight: 800, letterSpacing: "0.06em" }}>
+            Processing submission<span className="loading-dots">...</span>
+          </div>
+        )}
+
+        {success && (
+          <div style={{ marginTop: 18, fontWeight: 800, letterSpacing: "0.06em" }}>
+            Thank you for your submission.
+          </div>
         )}
       </div>
 

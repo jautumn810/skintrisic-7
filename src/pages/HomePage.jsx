@@ -1,22 +1,80 @@
-import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 
 export default function HomePage() {
+  const navigate = useNavigate()
   const headingRef = useRef(null)
+  const [position, setPosition] = useState('center') // 'center', 'left', 'right'
 
   useEffect(() => {
+    console.log('🏠 Home page mounted')
     if (headingRef.current) {
+      console.log('📝 Heading ref found, setting initial opacity')
       headingRef.current.style.opacity = '0'
       const timer = setTimeout(() => {
         if (headingRef.current) {
+          console.log('✨ Fading in heading')
           headingRef.current.style.transition = 'opacity 1s ease-out'
           headingRef.current.style.opacity = '1'
         }
       }, 100)
       return () => clearTimeout(timer)
+    } else {
+      console.warn('⚠️ Heading ref not found!')
     }
   }, [])
+
+  useEffect(() => {
+    console.log('🔄 Position state changed:', { position })
+  }, [position])
+
+  function handleLeftMouseEnter() {
+    console.log('👈 Left button hovered - moving text RIGHT')
+    setPosition('right')
+  }
+
+  function handleLeftMouseLeave() {
+    console.log('👈 Left button unhovered - moving text back to CENTER')
+    setPosition('center')
+  }
+
+  function handleLeftClick(e) {
+    console.log('🔘 Left button clicked')
+    e.preventDefault()
+    // Text should already be moved right from hover
+    // Navigate after a brief moment
+    setTimeout(() => {
+      navigate('/analysis/introduce')
+    }, 300)
+  }
+
+  function handleRightMouseEnter() {
+    console.log('👉 Right button hovered - moving text LEFT')
+    setPosition('left')
+  }
+
+  function handleRightMouseLeave() {
+    console.log('👉 Right button unhovered - moving text back to CENTER')
+    setPosition('center')
+  }
+
+  function handleRightClick(e) {
+    console.log('🔘 Right button clicked')
+    e.preventDefault()
+    // Text should already be moved left from hover
+    // Navigate after a brief moment
+    setTimeout(() => {
+      navigate('/analysis/introduce')
+    }, 300)
+  }
+
+  const headingStyle = {
+    transition: 'transform 0.5s ease-in-out',
+    transform: position === 'left' ? 'translateX(-100px)' : position === 'right' ? 'translateX(100px)' : 'translateX(0)'
+  }
+  
+  console.log('🎨 Current heading style:', headingStyle, 'Position:', position)
 
   return (
     <>
@@ -29,7 +87,7 @@ export default function HomePage() {
           <div className="absolute inset-0 flex items-center justify-center lg:hidden">
             <div className="w-[420px] h-[420px] border border-dotted border-[#A0A4AB] rotate-45 absolute top-1/2 left-1/2 -translate-x-[52%] -translate-y-1/2"></div>
           </div>
-          <div id="main-heading" className="relative z-10 text-center">
+          <div id="main-heading" className="relative z-10 text-center" style={headingStyle}>
             <h1 ref={headingRef} className="text-[60px] text-[#1A1B1C] lg:text-[100px] font-inter font-normal tracking-tighter leading-none opacity-0">
               Sophisticated<br />
               <span className="block text-[#1A1B1C]">skincare</span>
@@ -64,6 +122,9 @@ export default function HomePage() {
               <Link to="/testing">
                 <button
                   id="discover-button"
+                  onMouseEnter={handleLeftMouseEnter}
+                  onMouseLeave={handleLeftMouseLeave}
+                  onClick={handleLeftClick}
                   className="group inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md text-sm font-normal text-[#1A1B1C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/5 xl:translate-x-1/6 [@media(width>=1920px)]:translate-x-1/20 px-3 py-1"
                 >
                   <div className="w-[30px] h-[30px] border border-solid border-black rotate-45 cursor-pointer group-hover:scale-110 duration-300"></div>
@@ -79,6 +140,9 @@ export default function HomePage() {
               <Link to="/testing">
                 <button
                   id="take-test-button"
+                  onMouseEnter={handleRightMouseEnter}
+                  onMouseLeave={handleRightMouseLeave}
+                  onClick={handleRightClick}
                   className="group inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md text-sm font-normal text-[#1A1B1C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/5 xl:-translate-x-1/6 [@media(width>=1920px)]:-translate-x-1/20 px-3 py-1"
                 >
                   TAKE TEST

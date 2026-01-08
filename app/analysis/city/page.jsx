@@ -10,58 +10,15 @@ import { loadUser, saveUser } from '../../../lib/storage'
 import { postPhaseOne } from '../../../lib/api'
 
 export default function CityPage() {
-  console.log('CityPage component rendering');
   const router = useRouter()
   const [city, setCity] = useState("")
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    console.log('✅ CityPage useEffect running');
     const u = loadUser()
     if (u?.location) setCity(u.location)
-    
-    // Debug: Check if buttons have small class and CSS rules
-    setTimeout(() => {
-      console.log('%c=== CITY PAGE BUTTON DEBUG ===', 'color: blue; font-size: 16px; font-weight: bold;');
-      const buttons = document.querySelectorAll('.back-fixed .diamond-btn, .right-fixed .diamond-btn');
-      console.log(`Found ${buttons.length} buttons`);
-      
-      if (buttons.length === 0) {
-        console.warn('⚠️ No buttons found! Make sure you are on the city page.');
-      }
-      
-      buttons.forEach((btn, index) => {
-        const computedStyle = window.getComputedStyle(btn);
-        console.log(`%c--- Button ${index + 1} ---`, 'color: green; font-weight: bold;');
-        console.log('className:', btn.className);
-        console.log('classList:', Array.from(btn.classList));
-        console.log('has "small" class:', btn.classList.contains('small'));
-        console.log('has "diamond-btn" class:', btn.classList.contains('diamond-btn'));
-        console.log('Computed width:', computedStyle.width);
-        console.log('Computed height:', computedStyle.height);
-        console.log('Window width (for mobile check):', window.innerWidth);
-        
-        // Check if CSS rule exists
-        const stylesheets = Array.from(document.styleSheets);
-        let smallRuleFound = false;
-        stylesheets.forEach((sheet, sheetIndex) => {
-          try {
-            const rules = Array.from(sheet.cssRules || []);
-            rules.forEach((rule, ruleIndex) => {
-              if (rule.selectorText && rule.selectorText.includes('.diamond-btn.small')) {
-                console.log(`✅ Found .diamond-btn.small rule in stylesheet ${sheetIndex}, rule ${ruleIndex}:`, rule.cssText);
-                smallRuleFound = true;
-              }
-            });
-          } catch (e) {
-            console.log(`Could not access stylesheet ${sheetIndex}:`, e.message);
-          }
-        });
-        console.log('Small CSS rule found:', smallRuleFound);
-      });
-      console.log('%c=== END DEBUG ===', 'color: blue; font-size: 16px; font-weight: bold;');
-    }, 100);
   }, [])
 
   async function onProceed() {
@@ -81,14 +38,28 @@ export default function CityPage() {
 
     setError(null)
     setLoading(true)
+    setSuccess(false)
+
+    const startTime = Date.now()
 
     try {
       saveUser({ name, location })
       await postPhaseOne({ name, location })
-      router.push("/analysis/permissions")
+      
+      const elapsed = Date.now() - startTime
+      const minDisplay = 600
+      if (elapsed < minDisplay) {
+        await new Promise(resolve => setTimeout(resolve, minDisplay - elapsed))
+      }
+      
+      setSuccess(true)
+      setLoading(false)
+      
+      setTimeout(() => {
+        router.push("/analysis/permissions")
+      }, 1500)
     } catch (e) {
       setError(e?.message ?? "Failed to submit Phase 1 API.")
-    } finally {
       setLoading(false)
     }
   }
@@ -112,12 +83,29 @@ export default function CityPage() {
         </div>
       )}
 
+      {loading && (
+        <div style={{ maxWidth: 980, margin: "14px auto 0", padding: "0 28px", fontWeight: 800, letterSpacing: "0.06em" }}>
+          Processing submission<span className="loading-dots">...</span>
+        </div>
+      )}
+
+      {success && (
+        <div style={{ maxWidth: 980, margin: "14px auto 0", padding: "0 28px", fontWeight: 800, letterSpacing: "0.06em" }}>
+          Thank you for your submission.
+        </div>
+      )}
+
       <div className="back-fixed">
-        <DiamondButton label="BACK" variant="white" onClick={() => router.back()} className="small" />
+        <DiamondButton label="BACK" variant="white" onClick={() => router.back()} />
       </div>
 
       <div className="right-fixed">
-        <DiamondButton label={loading ? "..." : "PROCEED"} variant="black" onClick={() => { if (!loading) onProceed(); }} className="small" />
+        <DiamondButton 
+          label="PROCEED" 
+          variant="black" 
+          onClick={() => { if (!loading && !success) onProceed(); }} 
+          disabled={loading || success}
+        />
       </div>
     </div>
   )

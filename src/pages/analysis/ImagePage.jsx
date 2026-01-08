@@ -9,6 +9,7 @@ export default function ImageUploadPage() {
   const navigate = useNavigate()
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
   const [previewImage, setPreviewImage] = useState(null)
 
   // Auto-process pending image from permissions page
@@ -33,14 +34,21 @@ export default function ImageUploadPage() {
     setPreviewImage(b64) // Show preview
     try {
       saveImageBase64(b64)
-      const json = await postPhaseTwo({ Image: b64 })
+      const json = await postPhaseTwo({ image: b64 })
       console.log('Phase 2 API response (full):', JSON.stringify(json, null, 2))
       console.log('Phase 2 API response (race data):', JSON.stringify(json?.data?.race, null, 2))
       console.log('Phase 2 API response (age data):', JSON.stringify(json?.data?.age, null, 2))
       console.log('Phase 2 API response (gender data):', JSON.stringify(json?.data?.gender, null, 2))
       saveAI(json)
-      alert("Image analyzed successfully")
-      navigate("/analysis/processing")
+      
+      // Show success message
+      setSuccess(true)
+      setLoading(false)
+      
+      // Navigate after showing thank you message
+      setTimeout(() => {
+        navigate("/analysis/results")
+      }, 2000)
     } catch (e) {
       setError(e?.message ?? "Failed to upload image.")
       setLoading(false)
@@ -54,18 +62,98 @@ export default function ImageUploadPage() {
       const b64 = await fileToBase64(file)
       setPreviewImage(b64) // Show preview
       saveImageBase64(b64)
-      const json = await postPhaseTwo({ Image: b64 })
+      const json = await postPhaseTwo({ image: b64 })
       console.log('Phase 2 API response (full):', JSON.stringify(json, null, 2))
       console.log('Phase 2 API response (race data):', JSON.stringify(json?.data?.race, null, 2))
       console.log('Phase 2 API response (age data):', JSON.stringify(json?.data?.age, null, 2))
       console.log('Phase 2 API response (gender data):', JSON.stringify(json?.data?.gender, null, 2))
       saveAI(json)
-      alert("Image analyzed successfully")
-      navigate("/analysis/processing")
+      
+      // Show success message
+      setSuccess(true)
+      setLoading(false)
+      
+      // Navigate after showing thank you message
+      setTimeout(() => {
+        navigate("/analysis/results")
+      }, 2000)
     } catch (e) {
       setError(e?.message ?? "Failed to upload image.")
       setLoading(false)
     }
+  }
+
+  // Show processing or success state
+  if (loading || success) {
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        position: 'relative'
+      }}>
+        <SiteHeader section="INTRO" />
+        <div style={{ 
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          width: '500px',
+          height: '500px',
+          zIndex: 1
+        }}>
+          {/* Rotating dotted diamonds - medium sized */}
+          <div style={{
+            position: 'absolute',
+            width: '420px',
+            height: '420px',
+            top: '50%',
+            left: '50%',
+            marginTop: '-210px',
+            marginLeft: '-210px',
+            border: '3px dotted rgba(0,0,0,0.3)',
+            transform: 'rotate(45deg)',
+            animation: 'cityDiamondSpin1 44s linear infinite',
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            width: '350px',
+            height: '350px',
+            top: '50%',
+            left: '50%',
+            marginTop: '-175px',
+            marginLeft: '-175px',
+            border: '3px dotted rgba(0,0,0,0.25)',
+            transform: 'rotate(45deg)',
+            animation: 'cityDiamondSpin2 56s linear infinite',
+          }}></div>
+          
+          {/* Processing/Success text - perfectly centered */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 10,
+            fontSize: '24px',
+            fontWeight: 800,
+            letterSpacing: '0.06em',
+            textAlign: 'center',
+            color: '#111',
+            maxWidth: '400px',
+            padding: '0 20px',
+            lineHeight: '1.4'
+          }}>
+            {success ? 'Thank you you may proceed to the next step' : 'Processing your analysis'}
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (

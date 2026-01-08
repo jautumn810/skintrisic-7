@@ -13,67 +13,9 @@ export default function CityPage() {
   const [city, setCity] = useState("")
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
 
-  useEffect(() => {
-    console.log('✅ CityPage useEffect running');
-    const u = loadUser()
-    if (u?.location) setCity(u.location)
-    
-    // Debug: Check if buttons have small class and CSS rules
-    const debugButtons = () => {
-      console.log('%c=== CITY PAGE BUTTON DEBUG ===', 'color: blue; font-size: 16px; font-weight: bold;');
-      const buttons = document.querySelectorAll('.back-fixed .diamond-btn, .right-fixed .diamond-btn');
-      console.log(`Found ${buttons.length} buttons`);
-      
-      if (buttons.length === 0) {
-        console.warn('⚠️ No buttons found! Make sure you are on the city page.');
-        return;
-      }
-      
-      buttons.forEach((btn, index) => {
-        const computedStyle = window.getComputedStyle(btn);
-        const windowWidth = window.innerWidth;
-        const isMobile = windowWidth <= 768;
-        console.log(`%c--- Button ${index + 1} ---`, 'color: green; font-weight: bold;');
-        console.log('className:', btn.className);
-        console.log('classList:', Array.from(btn.classList));
-        console.log('has "diamond-btn-small" class:', btn.classList.contains('diamond-btn-small'));
-        console.log('has "diamond-btn" class:', btn.classList.contains('diamond-btn'));
-        console.log('Computed width:', computedStyle.width);
-        console.log('Computed height:', computedStyle.height);
-        console.log('Window width:', windowWidth, 'px');
-        console.log('Is mobile (≤768px):', isMobile);
-        console.log('Expected width:', isMobile ? '70px' : '80px');
-        console.log('Expected height:', isMobile ? '70px' : '80px');
-        const expectedWidth = isMobile ? '70px' : '80px';
-        const actualWidth = computedStyle.width;
-        console.log('✅ CSS Match:', actualWidth === expectedWidth ? 'CORRECT ✓' : `❌ WRONG - Expected ${expectedWidth}, got ${actualWidth}`);
-        
-        // Check which CSS rule is being applied
-        const stylesheets = Array.from(document.styleSheets);
-        stylesheets.forEach((sheet, sheetIndex) => {
-          try {
-            const rules = Array.from(sheet.cssRules || []);
-            rules.forEach((rule) => {
-              if (rule.selectorText && rule.selectorText.includes('diamond-btn-small') && rule.media && rule.media.mediaText.includes('max-width: 768px')) {
-                console.log('📱 Mobile media query rule found:', rule.cssText);
-              }
-            });
-          } catch (e) {
-            // Cross-origin stylesheets will throw errors
-          }
-        });
-      });
-      console.log('%c=== END DEBUG ===', 'color: blue; font-size: 16px; font-weight: bold;');
-    };
-    
-    // Run immediately and after a delay
-    setTimeout(debugButtons, 100);
-    
-    // Also run on window resize to check mobile styles
-    window.addEventListener('resize', debugButtons);
-    return () => window.removeEventListener('resize', debugButtons);
-  }, [])
+  // Removed auto-loading from localStorage - user should enter fresh each time
 
   async function onProceed() {
     if (!isValidLettersOnly(city)) {
@@ -96,12 +38,100 @@ export default function CityPage() {
     try {
       saveUser({ name, location })
       await postPhaseOne({ name, location })
-      navigate("/analysis/permissions")
+      
+      // Show success message
+      setSuccess(true)
+      setLoading(false)
+      
+      // Navigate after showing thank you message
+      setTimeout(() => {
+        navigate("/analysis/permissions")
+      }, 2000)
     } catch (e) {
       setError(e?.message ?? "Failed to submit Phase 1 API.")
-    } finally {
       setLoading(false)
     }
+  }
+
+  if (loading || success) {
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        position: 'relative'
+      }}>
+        <SiteHeader section="INTRO" />
+        <div style={{ 
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          width: '500px',
+          height: '500px',
+          zIndex: 1
+        }}>
+          {/* Rotating dotted diamonds - medium sized */}
+          <div style={{
+            position: 'absolute',
+            width: '420px',
+            height: '420px',
+            top: '50%',
+            left: '50%',
+            marginTop: '-210px',
+            marginLeft: '-210px',
+            border: '3px dotted rgba(0,0,0,0.3)',
+            transform: 'rotate(45deg)',
+            animation: 'cityDiamondSpin1 44s linear infinite',
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            width: '350px',
+            height: '350px',
+            top: '50%',
+            left: '50%',
+            marginTop: '-175px',
+            marginLeft: '-175px',
+            border: '3px dotted rgba(0,0,0,0.25)',
+            transform: 'rotate(45deg)',
+            animation: 'cityDiamondSpin2 56s linear infinite',
+          }}></div>
+          
+          {/* Processing/Success text - perfectly centered */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 10,
+            fontSize: '24px',
+            fontWeight: 800,
+            letterSpacing: '0.06em',
+            textAlign: 'center',
+            color: '#111',
+            maxWidth: '400px',
+            padding: '0 20px',
+            lineHeight: '1.4'
+          }}>
+            {success ? (
+              'Thank you. You may proceed to the next step'
+            ) : (
+              <>
+                Processing submission
+                <span className="loading-dots">
+                  <span>.</span><span>.</span><span>.</span>
+                </span>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -125,7 +155,7 @@ export default function CityPage() {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: 980, margin: '40px auto 0', padding: '0 28px', gap: '20px' }}>
         <DiamondButton label="BACK" variant="white" onClick={() => navigate(-1)} className="diamond-btn-small" />
-        <DiamondButton label={loading ? "..." : "PROCEED"} variant="black" onClick={() => { if (!loading) onProceed(); }} className="diamond-btn-small" />
+        <DiamondButton label="PROCEED" variant="black" onClick={() => { if (!loading) onProceed(); }} className="diamond-btn-small" />
       </div>
     </div>
   )

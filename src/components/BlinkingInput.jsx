@@ -11,11 +11,19 @@ export default function BlinkingInput({ value, onChange, placeholder }) {
     <div className="relative flex justify-center mt-6" style={{ marginTop: 110 }}>
       <input
         ref={inputRef}
+        type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        onKeyDown={(e) => {
+          // Allow all standard keyboard input including backspace, delete, arrow keys, etc.
+          if (e.key === 'Backspace' || e.key === 'Delete' || e.key.startsWith('Arrow')) {
+            e.stopPropagation();
+          }
+        }}
         className="absolute inset-0 opacity-0 caret-transparent"
         autoComplete="off"
         spellCheck={false}
+        style={{ pointerEvents: 'auto' }}
       />
 
       <div className="relative text-center">

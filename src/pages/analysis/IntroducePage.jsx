@@ -11,10 +11,7 @@ export default function IntroducePage() {
   const [name, setName] = useState("")
   const [error, setError] = useState(null)
 
-  useEffect(() => {
-    const u = loadUser()
-    if (u?.name) setName(u.name)
-  }, [])
+  // Removed auto-loading from localStorage - user should enter fresh each time
 
   function onProceed() {
     if (!isValidLettersOnly(name)) {

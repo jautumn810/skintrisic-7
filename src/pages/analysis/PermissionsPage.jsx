@@ -10,21 +10,21 @@ export default function PermissionsPage() {
   const [previewImage, setPreviewImage] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [showCameraModal, setShowCameraModal] = useState(false)
   const fileInputRef = useRef(null)
 
-  const handleCameraClick = async () => {
-    try {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true })
-        // Stop the stream immediately as we're just requesting permission
-        stream.getTracks().forEach(track => track.stop())
-        console.log('Camera permission granted')
-        // Navigate to selfie page
-        navigate("/analysis/selfie")
-      }
-    } catch (error) {
-      console.log('Camera permission denied or error:', error)
-    }
+  const handleCameraClick = () => {
+    setShowCameraModal(true)
+  }
+
+  const handleAllowCamera = async () => {
+    setShowCameraModal(false)
+    // Navigate to camera setup page first
+    navigate("/analysis/camera-setup")
+  }
+
+  const handleDenyCamera = () => {
+    setShowCameraModal(false)
   }
 
   const handleGalleryClick = () => {
@@ -89,6 +89,35 @@ export default function PermissionsPage() {
 
         <div className="ai-blocks-container">
           <div className="ai-block" onClick={handleCameraClick} style={{ cursor: 'pointer' }}>
+            {/* Rotating dotted diamonds */}
+            <div className="ai-rotating-diamond ai-diamond-outer" style={{
+              position: 'absolute',
+              width: '600px',
+              height: '600px',
+              top: '50%',
+              left: '50%',
+              marginTop: '-300px',
+              marginLeft: '-300px',
+              border: '3px dotted rgba(0,0,0,0.18)',
+              transform: 'rotate(45deg)',
+              animation: 'cityDiamondSpin1 44s linear infinite',
+              zIndex: 1,
+              pointerEvents: 'none'
+            }}></div>
+            <div className="ai-rotating-diamond ai-diamond-inner" style={{
+              position: 'absolute',
+              width: '500px',
+              height: '500px',
+              top: '50%',
+              left: '50%',
+              marginTop: '-250px',
+              marginLeft: '-250px',
+              border: '3px dotted rgba(0,0,0,0.15)',
+              transform: 'rotate(45deg)',
+              animation: 'cityDiamondSpin2 56s linear infinite',
+              zIndex: 1,
+              pointerEvents: 'none'
+            }}></div>
             <div className="ai-block-inner">
               <img src="/icons/camera-aperture.png" alt="camera" width={180} height={180} className="ai-icon" />
               <div className="ai-label-top">ALLOW A.I.</div>
@@ -97,6 +126,35 @@ export default function PermissionsPage() {
           </div>
 
           <div className="ai-block" onClick={handleGalleryClick} style={{ cursor: 'pointer' }}>
+            {/* Rotating dotted diamonds */}
+            <div className="ai-rotating-diamond ai-diamond-outer" style={{
+              position: 'absolute',
+              width: '600px',
+              height: '600px',
+              top: '50%',
+              left: '50%',
+              marginTop: '-300px',
+              marginLeft: '-300px',
+              border: '3px dotted rgba(0,0,0,0.18)',
+              transform: 'rotate(45deg)',
+              animation: 'cityDiamondSpin1 44s linear infinite',
+              zIndex: 1,
+              pointerEvents: 'none'
+            }}></div>
+            <div className="ai-rotating-diamond ai-diamond-inner" style={{
+              position: 'absolute',
+              width: '500px',
+              height: '500px',
+              top: '50%',
+              left: '50%',
+              marginTop: '-250px',
+              marginLeft: '-250px',
+              border: '3px dotted rgba(0,0,0,0.15)',
+              transform: 'rotate(45deg)',
+              animation: 'cityDiamondSpin2 56s linear infinite',
+              zIndex: 1,
+              pointerEvents: 'none'
+            }}></div>
             <div className="ai-block-inner">
               <img src="/icons/icon-gallery.svg" alt="gallery" width={180} height={180} className="ai-icon" />
               <div className="ai-label-top">ALLOW A.I.</div>
@@ -113,6 +171,28 @@ export default function PermissionsPage() {
       <div className="right-fixed">
         <DiamondButton label="PROCEED" variant="black" onClick={() => navigate("/analysis/image")} className="diamond-btn-small" />
       </div>
+
+      {/* Camera Permission Modal */}
+      {showCameraModal && (
+        <div className="camera-modal-overlay" onClick={handleDenyCamera}>
+          <div className="camera-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="camera-modal-content">
+              <div className="camera-modal-text">
+                <span className="camera-modal-red-dot"></span>
+                ALLOW A.I. TO ACCESS YOUR CAMERA
+              </div>
+              <div className="camera-modal-buttons">
+                <button className="camera-modal-button camera-modal-deny" onClick={handleDenyCamera}>
+                  DENY
+                </button>
+                <button className="camera-modal-button camera-modal-allow" onClick={handleAllowCamera}>
+                  ALLOW
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

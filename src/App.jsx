@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage'
 import TestingPage from './pages/TestingPage'
 import IntroducePage from './pages/analysis/IntroducePage'
 import PermissionsPage from './pages/analysis/PermissionsPage'
+import CameraSetupPage from './pages/analysis/CameraSetupPage'
 import ImagePage from './pages/analysis/ImagePage'
 import SelfiePage from './pages/analysis/SelfiePage'
 import ProcessingPage from './pages/analysis/ProcessingPage'
@@ -21,6 +22,7 @@ function App() {
         <Route path="/testing" element={<TestingPage />} />
         <Route path="/analysis/introduce" element={<IntroducePage />} />
         <Route path="/analysis/permissions" element={<PermissionsPage />} />
+        <Route path="/analysis/camera-setup" element={<CameraSetupPage />} />
         <Route path="/analysis/image" element={<ImagePage />} />
         <Route path="/analysis/selfie" element={<SelfiePage />} />
         <Route path="/analysis/processing" element={<ProcessingPage />} />
