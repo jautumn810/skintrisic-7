@@ -400,11 +400,14 @@ html, body {
 
 /* Input pages */
 .input-top {
-  margin: 0;
-  padding: 0 0 0 28px;
+  position: relative;
+  margin: 10px 0 0;
+  padding: 0;
+  margin-left: -28px;
+  padding-left: 28px;
   font-weight: 800;
   letter-spacing: 0.06em;
-  margin-top: 20px;
+  font-size: 18px;
 }
 .underline {
   max-width: 980px;

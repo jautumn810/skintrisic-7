@@ -443,17 +443,50 @@ html, body {
 
 /* Input pages */
 .input-top {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 90px 28px 0;
+  position: relative;
+  margin: 5px 0 0; /* Reduced from 10px to bring closer to header */
+  padding: 0;
+  margin-left: 0; /* Don't offset parent padding - match header spacing */
+  padding-left: 0; /* Use parent's 28px padding to match header */
   font-weight: 800;
   letter-spacing: 0.06em;
+  font-size: 18px;
+}
+
+/* On large screens, ensure .input-top aligns with header even when .input-page is centered */
+@media (min-width: 1037px) {
+  .input-top {
+    /* Break out of centered container to align with header */
+    /* Container is centered, so left edge is at: (100vw - 980px) / 2 */
+    /* We need to move left by that amount, then add 28px padding to match header */
+    margin-left: calc((100vw - 980px) / 2 * -1);
+    padding-left: 28px; /* Match header's left padding */
+  }
 }
 .city-page {
   padding-top: 20px;
 }
 .city-input-top {
-  padding: 20px 28px 0;
+  /* Match .input-top styling exactly */
+  position: relative;
+  margin: 5px 0 0; /* Reduced from 10px to bring closer to header */
+  padding: 0;
+  margin-left: 0; /* Don't offset parent padding - match header spacing */
+  padding-left: 0; /* Use parent's 28px padding to match header */
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: 18px;
+}
+
+/* On large screens, ensure .city-input-top aligns with header even when .input-page is centered */
+@media (min-width: 1037px) {
+  .city-input-top {
+    /* Break out of centered container to align with header */
+    /* Container is centered, so left edge is at: (100vw - 980px) / 2 */
+    /* We need to move left by that amount, then add 28px padding to match header */
+    margin-left: calc((100vw - 980px) / 2 * -1);
+    padding-left: 28px; /* Match header's left padding */
+  }
 }
 .underline {
   max-width: 980px;
@@ -471,6 +504,19 @@ html, body {
   right: 26px;
   bottom: 62px;
   z-index: 50;
+}
+
+/* Move buttons further down on mobile to prevent overlap */
+@media (max-width: 768px) {
+  .back-fixed {
+    bottom: 20px;
+  }
+  .right-fixed {
+    bottom: 20px;
+  }
+  .dem-bottom-nav {
+    bottom: 20px;
+  }
 }
 
 /* Permissions page */
@@ -668,24 +714,27 @@ html, body {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 28px 120px;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .dem-h1 {
-  font-size: clamp(44px, 8vw, 86px);
+  font-size: clamp(36px, 6.5vw, 72px);
   letter-spacing: 0.02em;
   font-weight: 300;
-  margin-top: 18px;
+  margin-top: 12px;
 }
 .dem-sub {
-  margin-top: 14px;
-  font-size: 18px;
+  margin-top: 10px;
+  font-size: 16px;
   letter-spacing: 0.08em;
   color: rgba(0,0,0,0.75);
 }
 .dem-cards {
   flex-shrink: 0;
   border-top: 2px solid rgba(0,0,0,0.55);
-  width: 380px;
-  min-width: 380px;
+  width: 280px;
+  min-width: 280px;
 }
 .dem-card {
   padding: 18px 18px;
@@ -702,18 +751,20 @@ html, body {
 .dem-content-layout {
   display: flex !important;
   flex-direction: row !important;
-  gap: 18px;
-  margin-top: 18px;
+  gap: 14px;
+  margin-top: 10px;
   align-items: flex-start;
   width: 100%;
   flex-wrap: nowrap;
+  box-sizing: border-box;
 }
+
 .dem-arc-block {
   flex-shrink: 0;
   background: #efefef;
   padding: 14px 14px 10px;
-  width: 600px;
-  min-width: 600px;
+  width: 400px;
+  min-width: 400px;
 }
 .dem-arc-instruction {
   margin-top: 8px;
@@ -726,11 +777,11 @@ html, body {
   flex: 1;
   background: #efefef;
   border-top: 2px solid rgba(0,0,0,0.55);
-  min-width: 500px;
+  min-width: 320px;
 }
 .dem-table-head {
   display: grid;
-  grid-template-columns: 1fr 80px;
+  grid-template-columns: 1fr 70px;
   padding: 10px 12px;
   font-size: 14px;
   letter-spacing: 0.04em;
@@ -739,7 +790,7 @@ html, body {
 }
 .dem-row {
   display: grid;
-  grid-template-columns: 1fr 80px;
+  grid-template-columns: 1fr 70px;
   align-items: center;
   padding: 10px 12px;
   border-bottom: 2px solid rgba(0,0,0,0.12);
@@ -888,6 +939,99 @@ html, body {
   }
 }
 
+/* Tablets - Demographics page responsiveness */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .dem-wrap {
+    max-width: 860px;
+    padding: 0 24px 120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .dem-content-layout {
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .dem-cards {
+    width: 300px;
+    min-width: 300px;
+  }
+  
+  .dem-arc-block {
+    width: 480px;
+    min-width: 480px;
+  }
+  
+  .dem-table {
+    min-width: 400px;
+  }
+}
+
+/* Laptops - Demographics page centering */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .dem-wrap {
+    max-width: 1200px;
+    padding: 0 28px 120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .dem-content-layout {
+    gap: 16px;
+    justify-content: center;
+    max-width: 1144px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .dem-cards {
+    width: 260px;
+    min-width: 260px;
+  }
+  
+  .dem-arc-block {
+    width: 380px;
+    min-width: 380px;
+  }
+  
+  .dem-table {
+    min-width: 300px;
+  }
+}
+
+/* Large desktops - Demographics page centering */
+@media (min-width: 1440px) {
+  .dem-wrap {
+    max-width: 1400px;
+    padding: 0 28px 120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .dem-content-layout {
+    max-width: 1344px;
+    gap: 18px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .dem-cards {
+    width: 280px;
+    min-width: 280px;
+  }
+  
+  .dem-arc-block {
+    width: 400px;
+    min-width: 400px;
+  }
+  
+  .dem-table {
+    min-width: 320px;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .diamond-outline {
@@ -968,17 +1112,37 @@ html, body {
   
   /* Smaller rotating diamonds on mobile */
   .ai-diamond-outer {
-    width: 400px !important;
-    height: 400px !important;
-    margin-top: -200px !important;
-    margin-left: -200px !important;
+    width: 280px !important;
+    height: 280px !important;
+    margin-top: -140px !important;
+    margin-left: -140px !important;
+  }
+
+  .ai-diamond-inner {
+    width: 220px !important;
+    height: 220px !important;
+    margin-top: -110px !important;
+    margin-left: -110px !important;
   }
   
-  .ai-diamond-inner {
-    width: 320px !important;
-    height: 320px !important;
-    margin-top: -160px !important;
-    margin-left: -160px !important;
+  /* Reduce processing overlay diamonds on mobile (ImagePage, SelfiePage) */
+  .processing-diamond-outer {
+    width: 280px !important;
+    height: 280px !important;
+    margin-top: -140px !important;
+    margin-left: -140px !important;
+  }
+  
+  .processing-diamond-inner {
+    width: 220px !important;
+    height: 220px !important;
+    margin-top: -110px !important;
+    margin-left: -110px !important;
+  }
+  
+  .processing-overlay-container {
+    width: 400px !important;
+    height: 400px !important;
   }
   
   .ai-icon {

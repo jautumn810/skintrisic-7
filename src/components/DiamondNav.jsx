@@ -9,8 +9,20 @@ export function DiamondButton({
   const finalClassName = `${className}`.trim()
 
   const handleClick = (e) => {
-    if (disabled) return
-    if (onClick) onClick(e)
+    console.log("🟢 DiamondButton clicked!", { label, disabled, hasOnClick: !!onClick })
+    
+    if (disabled) {
+      console.log("🟢 DiamondButton is disabled, returning early")
+      return
+    }
+    
+    if (onClick) {
+      console.log("🟢 DiamondButton calling onClick handler...")
+      onClick(e)
+      console.log("🟢 DiamondButton onClick handler completed")
+    } else {
+      console.log("🟢 DiamondButton has no onClick handler!")
+    }
   }
 
   return (

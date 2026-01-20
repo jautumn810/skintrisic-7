@@ -92,12 +92,12 @@ export default function PermissionsPage() {
             {/* Rotating dotted diamonds */}
             <div className="ai-rotating-diamond ai-diamond-outer" style={{
               position: 'absolute',
-              width: '600px',
-              height: '600px',
+              width: '360px',
+              height: '360px',
               top: '50%',
               left: '50%',
-              marginTop: '-300px',
-              marginLeft: '-300px',
+              marginTop: '-180px',
+              marginLeft: '-180px',
               border: '3px dotted rgba(0,0,0,0.18)',
               transform: 'rotate(45deg)',
               animation: 'cityDiamondSpin1 44s linear infinite',
@@ -106,12 +106,12 @@ export default function PermissionsPage() {
             }}></div>
             <div className="ai-rotating-diamond ai-diamond-inner" style={{
               position: 'absolute',
-              width: '500px',
-              height: '500px',
+              width: '300px',
+              height: '300px',
               top: '50%',
               left: '50%',
-              marginTop: '-250px',
-              marginLeft: '-250px',
+              marginTop: '-150px',
+              marginLeft: '-150px',
               border: '3px dotted rgba(0,0,0,0.15)',
               transform: 'rotate(45deg)',
               animation: 'cityDiamondSpin2 56s linear infinite',
@@ -129,12 +129,12 @@ export default function PermissionsPage() {
             {/* Rotating dotted diamonds */}
             <div className="ai-rotating-diamond ai-diamond-outer" style={{
               position: 'absolute',
-              width: '600px',
-              height: '600px',
+              width: '360px',
+              height: '360px',
               top: '50%',
               left: '50%',
-              marginTop: '-300px',
-              marginLeft: '-300px',
+              marginTop: '-180px',
+              marginLeft: '-180px',
               border: '3px dotted rgba(0,0,0,0.18)',
               transform: 'rotate(45deg)',
               animation: 'cityDiamondSpin1 44s linear infinite',
@@ -143,12 +143,12 @@ export default function PermissionsPage() {
             }}></div>
             <div className="ai-rotating-diamond ai-diamond-inner" style={{
               position: 'absolute',
-              width: '500px',
-              height: '500px',
+              width: '300px',
+              height: '300px',
               top: '50%',
               left: '50%',
-              marginTop: '-250px',
-              marginLeft: '-250px',
+              marginTop: '-150px',
+              marginLeft: '-150px',
               border: '3px dotted rgba(0,0,0,0.15)',
               transform: 'rotate(45deg)',
               animation: 'cityDiamondSpin2 56s linear infinite',
@@ -165,7 +165,22 @@ export default function PermissionsPage() {
       </div>
 
       <div className="back-fixed">
-        <DiamondButton label="BACK" variant="white" onClick={() => navigate(-1)} className="diamond-btn-small" />
+        <DiamondButton 
+          label="BACK" 
+          variant="white" 
+          onClick={() => {
+            console.log("🔵 PermissionsPage BACK button clicked")
+            console.log("🔵 Current location:", window.location.pathname)
+            console.log("🔵 Navigating to city page: /analysis/city")
+            try {
+              navigate("/analysis/city")
+              console.log("🔵 Navigation to city page successful")
+            } catch (error) {
+              console.error("🔵 Error navigating:", error)
+            }
+          }} 
+          className="diamond-btn-small" 
+        />
       </div>
 
       <div className="right-fixed">

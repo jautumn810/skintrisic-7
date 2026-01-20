@@ -153,9 +153,26 @@ export default function CityPage() {
         </div>
       )}
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: 980, margin: '40px auto 0', padding: '0 28px', gap: '20px' }}>
-        <DiamondButton label="BACK" variant="white" onClick={() => navigate(-1)} className="diamond-btn-small" />
-        <DiamondButton label="PROCEED" variant="black" onClick={() => { if (!loading) onProceed(); }} className="diamond-btn-small" />
+      <div className="back-fixed">
+        <DiamondButton 
+          label="BACK" 
+          variant="white" 
+          onClick={() => {
+            console.log("🔵 CityPage BACK button clicked")
+            console.log("🔵 Current location:", window.location.pathname)
+            console.log("🔵 Navigating to introduce page: /analysis/introduce")
+            try {
+              navigate("/analysis/introduce")
+              console.log("🔵 Navigation to introduce page successful")
+            } catch (error) {
+              console.error("🔵 Error navigating:", error)
+            }
+          }} 
+        />
+      </div>
+
+      <div className="right-fixed">
+        <DiamondButton label="PROCEED" variant="black" onClick={() => { if (!loading) onProceed(); }} />
       </div>
     </div>
   )

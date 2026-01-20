@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Resume</title>
+    <link rel="stylesheet" href="master.css">
+</head>
+<body>
+    <header>
+        <h1>John Doe</h1>
+        <p>Web Developer & Software Engineer</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="cover-letter.html">Cover Letter</a></li>
+            <li><a href="career-goals.html">Career Goals</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <section id="contact-info">
+                <h2>Contact Information</h2>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:john.doe@email.com">john.doe@email.com</a><br>
+                    <strong>Phone:</strong> <a href="tel:+1234567890">(123) 456-7890</a><br>
+                    <strong>Location:</strong> <span class="location">San Francisco, CA</span>
+                </p>
+                <hr>
+            </section>
+
+            <section id="professional-summary">
+                <h3>Professional Summary</h3>
+                <p>
+                    Experienced web developer with expertise in <em>HTML</em>, <em>CSS</em>, and <em>JavaScript</em>. 
+                    Passionate about creating responsive and user-friendly web applications. 
+                    Strong problem-solving skills and attention to detail.
+                </p>
+            </section>
+
+            <section id="work-experience">
+                <h3>Work Experience</h3>
+                <table id="experience-table">
+                    <caption>Professional Experience Timeline</caption>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Position</th>
+                            <th>Duration</th>
+                            <th>Key Achievements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tech Solutions Inc.</td>
+                            <td>Senior Web Developer</td>
+                            <td>2020 - Present</td>
+                            <td>Led development of 10+ web applications</td>
+                        </tr>
+                        <tr>
+                            <td>Digital Innovations</td>
+                            <td>Web Developer</td>
+                            <td>2018 - 2020</td>
+                            <td>Improved site performance by 40%</td>
+                        </tr>
+                        <tr>
+                            <td>StartupXYZ</td>
+                            <td>Junior Developer</td>
+                            <td>2016 - 2018</td>
+                            <td>Built responsive portfolio websites</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="education">
+                <h4>Education</h4>
+                <ul>
+                    <li><strong>Bachelor of Science in Computer Science</strong><br>
+                        University of Technology, 2016<br>
+                        <em>Magna Cum Laude</em>
+                    </li>
+                    <li><strong>Web Development Certification</strong><br>
+                        Online Coding Academy, 2015
+                    </li>
+                </ul>
+            </section>
+
+            <section id="skills">
+                <h5>Technical Skills</h5>
+                <ol>
+                    <li>HTML5 & CSS3</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>Responsive Web Design</li>
+                    <li>Version Control (Git)</li>
+                </ol>
+            </section>
+
+            <section id="certifications">
+                <h6>Certifications</h6>
+                <p>Certified Web Developer - Web Development Institute (2020)</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div id="current-date"></div>
+        <p>&copy; 2025 John Doe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript to populate the current date
+        const dateDiv = document.getElementById('current-date');
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateDiv.textContent = 'Last updated: ' + today.toLocaleDateString('en-US', options);
+        
+        // JavaScript to write message to console
+        console.log('Resume page loaded successfully. Date updated:', today.toLocaleDateString());
+    </script>
+</body>
+</html>
+

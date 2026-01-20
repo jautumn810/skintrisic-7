@@ -1,4 +1,5 @@
 import SiteHeader from '../../components/SiteHeader'
+import { DiamondButton } from '../../components/DiamondNav'
 import { useNavigate } from 'react-router-dom'
 
 export default function AnalysisResultsPage() {
@@ -9,6 +10,23 @@ export default function AnalysisResultsPage() {
       navigate('/analysis/demographics')
     }
     // Add navigation for other sections when they're implemented
+  }
+
+  const handleBack = () => {
+    console.log("🔵 AnalysisResultsPage BACK button clicked")
+    console.log("🔵 Current location:", window.location.pathname)
+    // Try to go back to the previous page (could be image or selfie)
+    // We'll use navigate(-1) with fallback
+    try {
+      console.log("🔵 Attempting to navigate back using history")
+      navigate(-1)
+      console.log("🔵 Navigation back successful")
+    } catch (error) {
+      console.error("🔵 Error navigating back:", error)
+      // Fallback to image page
+      console.log("🔵 Falling back to image page: /analysis/image")
+      navigate("/analysis/image")
+    }
   }
 
   return (
@@ -47,6 +65,24 @@ export default function AnalysisResultsPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="dem-bottom-nav">
+        <DiamondButton 
+          label="BACK" 
+          variant="white" 
+          onClick={handleBack}
+          className="diamond-btn-small" 
+        />
+        <DiamondButton 
+          label="HOME" 
+          variant="white" 
+          onClick={() => {
+            console.log("🔵 AnalysisResultsPage HOME button clicked")
+            navigate("/")
+          }} 
+          className="diamond-btn-small" 
+        />
       </div>
     </div>
   )

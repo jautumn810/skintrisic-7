@@ -73,7 +73,21 @@ export default function SummaryPage() {
           </div>
         </div>
         <div className="dem-bottom-nav">
-          <DiamondButton label="BACK" variant="white" onClick={() => navigate(-1)} />
+          <DiamondButton 
+            label="BACK" 
+            variant="white" 
+            onClick={() => {
+              console.log("🔵 SummaryPage BACK button clicked")
+              console.log("🔵 Current location:", window.location.pathname)
+              console.log("🔵 Navigating to demographics page: /analysis/demographics")
+              try {
+                navigate("/analysis/demographics")
+                console.log("🔵 Navigation to demographics page successful")
+              } catch (error) {
+                console.error("🔵 Error navigating:", error)
+              }
+            }} 
+          />
           <DiamondButton label="HOME" variant="white" onClick={() => navigate("/")} />
         </div>
       </div>
@@ -110,7 +124,21 @@ export default function SummaryPage() {
         </div>
       </div>
       <div className="dem-bottom-nav">
-        <DiamondButton label="BACK" variant="white" onClick={() => navigate(-1)} />
+        <DiamondButton 
+          label="BACK" 
+          variant="white" 
+          onClick={() => {
+            console.log("🔵 SummaryPage BACK button clicked (no data)")
+            console.log("🔵 Current location:", window.location.pathname)
+            console.log("🔵 Navigating to demographics page: /analysis/demographics")
+            try {
+              navigate("/analysis/demographics")
+              console.log("🔵 Navigation to demographics page successful")
+            } catch (error) {
+              console.error("🔵 Error navigating:", error)
+            }
+          }} 
+        />
         <DiamondButton label="HOME" variant="white" onClick={() => navigate("/")} />
       </div>
     </div>

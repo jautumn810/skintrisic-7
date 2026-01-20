@@ -1,10 +1,26 @@
 import { useEffect, useRef } from "react";
 
 export default function BlinkingInput({ value, onChange, placeholder }) {
+  console.log("🎯 BlinkingInput component rendering - placeholder:", placeholder)
+  
   const inputRef = useRef(null);
+  const fontSize = "clamp(32px, 6vw, 52px)"; // Larger responsive font size
+  
+  console.log("📏 BlinkingInput fontSize:", fontSize)
 
   useEffect(() => {
     inputRef.current?.focus();
+    
+    setTimeout(() => {
+      const spanEl = document.querySelector('span[style*="fontSize"]')
+      if (spanEl) {
+        const computed = window.getComputedStyle(spanEl)
+        console.log("=== BLINKING INPUT DEBUG ===")
+        console.log("FontSize constant:", fontSize)
+        console.log("Computed fontSize:", computed.fontSize)
+        console.log("Inline style:", spanEl.getAttribute('style'))
+      }
+    }, 100)
   }, []);
 
   return (
@@ -28,8 +44,8 @@ export default function BlinkingInput({ value, onChange, placeholder }) {
 
       <div className="relative text-center">
         <span
-          className={`font-light ${value ? "text-black" : ""}`}
-          style={{ fontSize: "clamp(46px, 9vw, 84px)", color: value ? "#111" : "rgba(0,0,0,0.35)" }}
+          className={`font-light blinking-input-text ${value ? "text-black" : ""}`}
+          style={{ fontSize: fontSize, color: value ? "#111" : "rgba(0,0,0,0.35)" }}
         >
           {value || placeholder}
         </span>

@@ -11,8 +11,8 @@ function sortScores(scores) {
 }
 
 function ArcMeter({ value = 0.0, percentage = "0" }) {
-  const size = 550
-  const stroke = 12
+  const size = 360
+  const stroke = 10
   const r = (size - stroke) / 2
   const c = 2 * Math.PI * r
   const dash = c * value
@@ -20,7 +20,7 @@ function ArcMeter({ value = 0.0, percentage = "0" }) {
 
   return (
     <div style={{ position: 'relative', display: "flex", justifyContent: "center", alignItems: "center", width: '100%' }}>
-      <svg width="100%" viewBox={`0 0 ${size} ${size}`} style={{ maxWidth: 550 }} className="dem-arc-svg">
+      <svg width="100%" viewBox={`0 0 ${size} ${size}`} style={{ maxWidth: 360 }} className="dem-arc-svg">
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#cfcfcf" strokeWidth={stroke} />
         <circle
           cx={size / 2}
@@ -39,7 +39,7 @@ function ArcMeter({ value = 0.0, percentage = "0" }) {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        fontSize: '48px',
+        fontSize: '36px',
         fontWeight: 800,
         color: '#111'
       }} className="dem-arc-percentage">
@@ -123,7 +123,7 @@ export default function DemographicsPage() {
       <SiteHeader section="INTRO" />
 
       <div className="dem-wrap" style={{ paddingTop: 140 }}>
-        <div style={{ fontSize: 28, fontWeight: 900, letterSpacing: "0.02em" }}>A.I. ANALYSIS</div>
+        <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: "0.02em" }}>A.I. ANALYSIS</div>
         <div className="dem-h1">DEMOGRAPHICS</div>
         <div className="dem-sub">PREDICTED RACE &amp; AGE</div>
 
@@ -218,7 +218,22 @@ export default function DemographicsPage() {
       </div>
 
       <div className="dem-bottom-nav">
-        <DiamondButton label="BACK" variant="white" onClick={() => navigate(-1)} className="diamond-btn-small" />
+        <DiamondButton 
+          label="BACK" 
+          variant="white" 
+          onClick={() => {
+            console.log("🔵 DemographicsPage BACK button clicked")
+            console.log("🔵 Current location:", window.location.pathname)
+            console.log("🔵 Navigating to results page: /analysis/results")
+            try {
+              navigate("/analysis/results")
+              console.log("🔵 Navigation to results page successful")
+            } catch (error) {
+              console.error("🔵 Error navigating:", error)
+            }
+          }} 
+          className="diamond-btn-small" 
+        />
         <DiamondButton label="HOME" variant="white" onClick={() => navigate("/")} className="diamond-btn-small" />
       </div>
     </div>

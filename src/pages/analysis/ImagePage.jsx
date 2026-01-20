@@ -94,7 +94,7 @@ export default function ImageUploadPage() {
         position: 'relative'
       }}>
         <SiteHeader section="INTRO" />
-        <div style={{ 
+        <div className="processing-overlay-container" style={{ 
           position: 'fixed',
           top: '50%',
           left: '50%',
@@ -108,7 +108,7 @@ export default function ImageUploadPage() {
           zIndex: 1
         }}>
           {/* Rotating dotted diamonds - medium sized */}
-          <div style={{
+          <div className="processing-diamond-outer" style={{
             position: 'absolute',
             width: '420px',
             height: '420px',
@@ -120,7 +120,7 @@ export default function ImageUploadPage() {
             transform: 'rotate(45deg)',
             animation: 'cityDiamondSpin1 44s linear infinite',
           }}></div>
-          <div style={{
+          <div className="processing-diamond-inner" style={{
             position: 'absolute',
             width: '350px',
             height: '350px',
@@ -228,7 +228,22 @@ export default function ImageUploadPage() {
       </div>
 
       <div className="back-fixed">
-        <DiamondButton label="BACK" variant="white" onClick={() => navigate(-1)} className="diamond-btn-small" />
+        <DiamondButton 
+          label="BACK" 
+          variant="white" 
+          onClick={() => {
+            console.log("🔵 ImagePage BACK button clicked")
+            console.log("🔵 Current location:", window.location.pathname)
+            console.log("🔵 Navigating to permissions page: /analysis/permissions")
+            try {
+              navigate("/analysis/permissions")
+              console.log("🔵 Navigation to permissions page successful")
+            } catch (error) {
+              console.error("🔵 Error navigating:", error)
+            }
+          }} 
+          className="diamond-btn-small" 
+        />
       </div>
 
       <div className="right-fixed">

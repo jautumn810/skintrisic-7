@@ -1,0 +1,397 @@
+/* Universal Selector */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Element Selector */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Typography */
+h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2em;
+    color: #34495e;
+    font-style: italic;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #34495e;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+h4, h5, h6 {
+    font-size: 1.2em;
+    color: #34495e;
+    margin-top: 0.8em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 1em;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Background Color */
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 2em;
+    text-align: center;
+}
+
+/* Margin, Padding, Border */
+nav {
+    background-color: #2c3e50;
+    padding: 1em 0;
+    margin-bottom: 2em;
+    border-bottom: 3px solid #1a252f;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Pseudo-class Selector */
+nav a:hover {
+    background-color: #34495e;
+}
+
+nav a:active {
+    background-color: #1a252f;
+}
+
+nav a:visited {
+    color: #ecf0f1;
+}
+
+/* Class Selector */
+.location {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.date {
+    font-style: italic;
+    color: #7f8c8d;
+}
+
+.portfolio-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #34495e;
+    border-radius: 8px;
+    margin: 1em 0;
+    display: block;
+}
+
+.audio-caption,
+.video-caption {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    font-style: italic;
+    margin-top: 0.5em;
+}
+
+/* ID Selector */
+#contact-info {
+    background-color: #ecf0f1;
+    padding: 1.5em;
+    border-radius: 5px;
+    margin-bottom: 2em;
+}
+
+#experience-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    background-color: white;
+}
+
+#experience-table caption {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: #2c3e50;
+}
+
+#experience-table th,
+#experience-table td {
+    border: 1px solid #bdc3c7;
+    padding: 0.8em;
+    text-align: left;
+}
+
+#experience-table th {
+    background-color: #34495e;
+    color: white;
+    font-weight: bold;
+}
+
+#experience-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+#current-date {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0.5em;
+}
+
+#contact-form-section {
+    background-color: white;
+    padding: 2em;
+    border-radius: 8px;
+    margin: 2em 0;
+    border: 2px solid #bdc3c7;
+}
+
+/* Descendant Selector */
+nav ul li a {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+main section p {
+    text-align: justify;
+    line-height: 1.8;
+}
+
+form .form-group {
+    margin-bottom: 1.5em;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 0.8em;
+    border: 2px solid #bdc3c7;
+    border-radius: 4px;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 2em;
+    margin-top: 0.5em;
+}
+
+.radio-group input[type="radio"] {
+    width: auto;
+    margin-right: 0.5em;
+}
+
+.radio-group label {
+    display: inline;
+    font-weight: normal;
+    margin-left: 0.3em;
+}
+
+form button {
+    background-color: #3498db;
+    color: white;
+    padding: 0.8em 2em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #2980b9;
+}
+
+form button[type="reset"] {
+    background-color: #95a5a6;
+}
+
+form button[type="reset"]:hover {
+    background-color: #7f8c8d;
+}
+
+/* List Style Properties */
+ul {
+    list-style-type: square;
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+/* Additional Styling */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+    background-color: white;
+    min-height: 60vh;
+}
+
+article {
+    padding: 1em;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #bdc3c7;
+    margin: 1.5em 0;
+}
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5em;
+    margin-top: 2em;
+}
+
+footer p {
+    color: white;
+    margin: 0;
+}
+
+/* Audio and Video Styling */
+audio,
+video {
+    display: block;
+    margin: 1.5em 0;
+    width: 100%;
+    max-width: 640px;
+}
+
+video {
+    border: 2px solid #34495e;
+    border-radius: 8px;
+}
+
+/* Strong and Emphasized Text */
+strong {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+em {
+    font-style: italic;
+    color: #34495e;
+}
+
+mark {
+    background-color: #f1c40f;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+/* Link Styling */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Table Styling */
+table {
+    margin: 1em 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+    
+    main {
+        padding: 1em;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    #experience-table {
+        font-size: 0.9em;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+}
+
