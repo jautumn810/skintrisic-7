@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
-import TestingPage from './pages/TestingPage'
 import IntroducePage from './pages/analysis/IntroducePage'
 import PermissionsPage from './pages/analysis/PermissionsPage'
 import CameraSetupPage from './pages/analysis/CameraSetupPage'
@@ -19,7 +18,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/testing" element={<TestingPage />} />
         <Route path="/analysis/introduce" element={<IntroducePage />} />
         <Route path="/analysis/permissions" element={<PermissionsPage />} />
         <Route path="/analysis/camera-setup" element={<CameraSetupPage />} />

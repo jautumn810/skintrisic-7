@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 
 export default function HomePage() {
@@ -97,17 +97,18 @@ export default function HomePage() {
             Skinstric developed an A.I. that creates a highly-personalized routine tailored to what your skin needs.
           </p>
           <div className="z-10 mt-4 lg:hidden">
-            <Link to="/testing">
-              <button className="relative flex items-center gap-4 hover:scale-105 duration-300">
-                <span className="text-[12px] font-bold cursor-pointer">ENTER EXPERIENCE</span>
-                <div className="w-[24px] h-[24px] border border-solid border-black rotate-45 cursor-pointer"></div>
-                <span className="absolute left-[129px] scale-[0.5] hover:scale-60 duration-300">
-                  <svg viewBox="0 0 24 24" width="24" height="24" className="fill-current text-black">
-                    <path d="M8 5v14l11-7z"></path>
-                  </svg>
-                </span>
-              </button>
-            </Link>
+            <button 
+              onClick={() => navigate('/analysis/introduce')}
+              className="relative flex items-center gap-4 hover:scale-105 duration-300"
+            >
+              <span className="text-[12px] font-bold cursor-pointer">ENTER EXPERIENCE</span>
+              <div className="w-[24px] h-[24px] border border-solid border-black rotate-45 cursor-pointer"></div>
+              <span className="absolute left-[129px] scale-[0.5] hover:scale-60 duration-300">
+                <svg viewBox="0 0 24 24" width="24" height="24" className="fill-current text-black">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </span>
+            </button>
           </div>
           <div className="hidden lg:block fixed bottom-[calc(-7vh)] left-[calc(-20vw)] xl:left-[calc(-27vw)] 2xl:left-[calc(-31vw)] [@media(width>=1920px)]:left-[calc(-33vw)] font-normal text-sm text-[#1A1B1C] space-y-3 uppercase">
             <p>
@@ -119,37 +120,33 @@ export default function HomePage() {
           <div id="left-section" className="hidden lg:block fixed left-[calc(-53vw)] xl:left-[calc(-50vw)] top-1/2 -translate-y-1/2 w-[500px] h-[500px] transition-opacity duration-500 ease-in-out opacity-100">
             <div className="relative w-full h-full">
               <div className="w-full h-full border border-dotted border-[#A0A4AB] rotate-45 fixed inset-0"></div>
-              <Link to="/testing">
-                <button
-                  id="discover-button"
-                  onMouseEnter={handleLeftMouseEnter}
-                  onMouseLeave={handleLeftMouseLeave}
-                  onClick={handleLeftClick}
-                  className="group inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md text-sm font-normal text-[#1A1B1C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/5 xl:translate-x-1/6 [@media(width>=1920px)]:translate-x-1/20 px-3 py-1"
-                >
-                  <div className="w-[30px] h-[30px] border border-solid border-black rotate-45 cursor-pointer group-hover:scale-110 duration-300"></div>
-                  <span className="absolute left-[18px] top-[8px] scale-[0.9] rotate-180 group-hover:scale-105 duration-300">▶</span>
-                  <span>DISCOVER A.I.</span>
-                </button>
-              </Link>
+              <button
+                id="discover-button"
+                onMouseEnter={handleLeftMouseEnter}
+                onMouseLeave={handleLeftMouseLeave}
+                onClick={handleLeftClick}
+                className="group inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md text-sm font-normal text-[#1A1B1C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/5 xl:translate-x-1/6 [@media(width>=1920px)]:translate-x-1/20 px-3 py-1"
+              >
+                <div className="w-[30px] h-[30px] border border-solid border-black rotate-45 cursor-pointer group-hover:scale-110 duration-300"></div>
+                <span className="absolute left-[18px] top-[8px] scale-[0.9] rotate-180 group-hover:scale-105 duration-300">▶</span>
+                <span>DISCOVER A.I.</span>
+              </button>
             </div>
           </div>
           <div id="right-section" className="hidden lg:block fixed top-1/2 right-[calc(-53vw)] xl:right-[calc(-50vw)] -translate-y-1/2 w-[500px] h-[500px] transition-opacity duration-500 ease-in-out opacity-100">
             <div className="relative w-full h-full">
               <div className="w-full h-full border border-dotted border-[#A0A4AB] rotate-45 absolute inset-0"></div>
-              <Link to="/testing">
-                <button
-                  id="take-test-button"
-                  onMouseEnter={handleRightMouseEnter}
-                  onMouseLeave={handleRightMouseLeave}
-                  onClick={handleRightClick}
-                  className="group inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md text-sm font-normal text-[#1A1B1C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/5 xl:-translate-x-1/6 [@media(width>=1920px)]:-translate-x-1/20 px-3 py-1"
-                >
-                  TAKE TEST
-                  <div className="w-[30px] h-[30px] border border-solid border-black rotate-45 group-hover:scale-110 duration-300"></div>
-                  <span className="absolute left-[107px] top-[9px] scale-[0.9] cursor-pointer group-hover:scale-105 duration-300">▶</span>
-                </button>
-              </Link>
+              <button
+                id="take-test-button"
+                onMouseEnter={handleRightMouseEnter}
+                onMouseLeave={handleRightMouseLeave}
+                onClick={handleRightClick}
+                className="group inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md text-sm font-normal text-[#1A1B1C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/5 xl:-translate-x-1/6 [@media(width>=1920px)]:-translate-x-1/20 px-3 py-1"
+              >
+                TAKE TEST
+                <div className="w-[30px] h-[30px] border border-solid border-black rotate-45 group-hover:scale-110 duration-300"></div>
+                <span className="absolute left-[107px] top-[9px] scale-[0.9] cursor-pointer group-hover:scale-105 duration-300">▶</span>
+              </button>
             </div>
           </div>
         </div>
